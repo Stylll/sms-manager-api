@@ -1,5 +1,4 @@
 import bcrypt from 'bcrypt';
-import { isEmpty } from 'validator';
 import UserQueries from '../database/queries/user';
 import Authenticator from '../utils/Authenticator';
 
@@ -42,6 +41,12 @@ export default class UserController {
     }
   }
 
+  /**
+   * static method to generate access token for users
+   * @param {object} request
+   * @param {object} response
+   * @returns {object} user object or error message
+   */
   static async signin(request, response) {
     const { email, password } = request.body;
     try {
@@ -65,6 +70,22 @@ export default class UserController {
       }
 
       return response.status(401).json({ message: 'Email or Password is incorrect' });
+    } catch (error) {
+      return response.status(500).json({ message: 'Internal server error' });
+    }
+  }
+
+  /**
+   * static method to delete user
+   * @param {object} request
+   * @param {object} response
+   * @returns {object} user object or error message
+   */
+  static async deleteUser(request, response) {
+    const { id } = request.decoded.user;
+    try {
+      await UserQueries.DeleteUser([id]);
+      return response.status(200).json({ message: 'Contact has been deleted along with all sms references' });
     } catch (error) {
       return response.status(500).json({ message: 'Internal server error' });
     }
