@@ -1,6 +1,6 @@
 import Client from '../connect';
 
-export default class User {
+export default class UserQueries {
   /**
    * static method to get users from the database
    * @param {stirng} where
