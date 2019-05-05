@@ -29,4 +29,7 @@ router.post('/sms/:phoneNumber', ValidateUser.validateToken, ValidateUser.valida
   ValidateSMS.validatePhoneNumber, ValidateSMS.validateMessage, ErrorHandler.handleErrors,
   SMSController.sendSMS);
 
+router.get('/sms', ValidateUser.validateToken, ValidateUser.validateUserExists,
+  SMSController.getSMS);
+
 export default router;
