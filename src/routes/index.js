@@ -1,8 +1,10 @@
 import '@babel/polyfill';
 import express from 'express';
 import ValidateUser from '../middlewares/users/validateUser';
+import ValidateSMS from '../middlewares/sms/validateSMS';
 import ErrorHandler from '../middlewares/ErrorHandler';
 import UserController from '../controllers/UserController';
+import SMSController from '../controllers/SMSController';
 
 const router = express.Router();
 
@@ -22,5 +24,9 @@ router.post('/users/signup', ValidateUser.validateEmail, ValidateUser.validatePa
   UserController.createUser);
 
 router.post('/users/signin', UserController.signin);
+
+router.post('/sms/:phoneNumber', ValidateUser.validateToken, ValidateUser.validateUserExists,
+  ValidateSMS.validatePhoneNumber, ValidateSMS.validateMessage, ErrorHandler.handleErrors,
+  SMSController.sendSMS);
 
 export default router;

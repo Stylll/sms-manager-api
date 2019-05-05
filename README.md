@@ -28,6 +28,7 @@ https://www.pivotaltracker.com/n/projects/2344833
 <tr><th>HTTP VERB</th><th>ENDPOINTS</th><th>DESCRIPTION</th><th>QUERY</th><th>BODY PARAMS</th></tr>
 <tr><td>POST</td><td>/api/v1/users/signup</td><td>Creates a user account</td><td></td><td>email, username, password, phoneNumber</td></tr>
 <tr><td>POST</td><td>/api/v1/users/signin</td><td>Generates a new user token</td><td></td><td>email, password</td></tr>
+<tr><td>POST</td><td>/api/v1/sms/:phoneNumber</td><td>Sends sms to contact</td><td></td><td>message</td></tr>
 </table>
 
 
@@ -52,6 +53,7 @@ npm install
 npm run start:dev
 
 You should now be able to access the API via http://localhost:port/api/v1/
+```
 
 
 ## Built with

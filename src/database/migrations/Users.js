@@ -1,6 +1,5 @@
 const createUsersTable = async (client) => {
   const query = `
-  DROP TABLE IF EXISTS Users CASCADE;
   CREATE TABLE IF NOT EXISTS Users (
     user_id SERIAL PRIMARY KEY,
     username VARCHAR(225) NOT NULL UNIQUE,
