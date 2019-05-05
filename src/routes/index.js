@@ -25,11 +25,15 @@ router.post('/users/signup', ValidateUser.validateEmail, ValidateUser.validatePa
 
 router.post('/users/signin', UserController.signin);
 
+router.delete('/users', ValidateUser.validateToken, ValidateUser.validateUserExists,
+UserController.deleteUser);
+
 router.post('/sms/:phoneNumber', ValidateUser.validateToken, ValidateUser.validateUserExists,
   ValidateSMS.validatePhoneNumber, ValidateSMS.validateMessage, ErrorHandler.handleErrors,
   SMSController.sendSMS);
 
 router.get('/sms', ValidateUser.validateToken, ValidateUser.validateUserExists,
   SMSController.getSMS);
+
 
 export default router;

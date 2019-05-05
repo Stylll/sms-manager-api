@@ -33,4 +33,19 @@ export default class UserQueries {
       throw (error);
     }
   }
+
+  /**
+   * static method to create users in the database
+   * @param {array} values
+   * @returns {object} query response
+   */
+  static async DeleteUser(values) {
+    const query = 'DELETE FROM users WHERE user_id = $1';
+    try {
+      const response = await Client.query(query, values);
+      return response;
+    } catch (error) {
+      throw (error);
+    }
+  }
 }

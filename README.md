@@ -29,6 +29,8 @@ https://www.pivotaltracker.com/n/projects/2344833
 <tr><td>POST</td><td>/api/v1/users/signup</td><td>Creates a user account</td><td></td><td>email, username, password, phoneNumber</td><td></td></tr>
 <tr><td>POST</td><td>/api/v1/users/signin</td><td>Generates a new user token</td><td></td>
 <td>email, password</td><td></td></tr>
+<tr><td>DELETE</td><td>/api/v1/users</td><td>Deletes contacts and sms references</td><td></td>
+<td></td><td>x-access-token</td></tr>
 <tr><td>POST</td><td>/api/v1/sms/:phoneNumber</td><td>Sends sms to contact</td><td></td>
 <td>message</td><td>x-access-token</td></tr>
 <tr><td>GET</td><td>/api/v1/sms</td><td>Gets the list of sms sent and received</td><td></td>
