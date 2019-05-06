@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start:dev": "nodemon --exec babel-node src/index.js",
-    "run:migrate": "babel-node src/database/index.js"
+    "start:dev": "NODE_ENV=development nodemon --exec babel-node src/index.js",
+    "run:migrate": "NODE_ENV=development babel-node src/database/index.js",
+    "heroku:app": "babel-node src/index.js"
   },
   "repository": {
     "type": "git",
